@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-black-900: #1e2125;
+  --color-black-800: #232c3d;
+  --color-black-700: #4c586d;
+  --color-black-600: #39465a;
+
+  --color-blue-400: #81a8b3;
+  --color-blue-500: #4589ff;
+
+  --color-orange-500: #ff9f0a;
+  --color-red-500: #ff3b30;
+
+  --color-white: #ffffff;
+}
