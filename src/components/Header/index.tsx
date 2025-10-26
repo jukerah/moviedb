@@ -19,7 +19,7 @@ import { useSearch } from "../../hooks/useSearch";
  */
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [search, setSearch] = useSearch();
+  const { search, setSearch } = useSearch();
 
   return (
     <header className={styles.header} role="banner">

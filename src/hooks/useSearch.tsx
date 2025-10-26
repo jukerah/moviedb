@@ -10,7 +10,7 @@ import { Context } from "../contexts";
  * ---
  * ### 💡 Usage
  * ```tsx
- * const [search, setSearch] = useSearch();
+ * const { search, setSearch } = useSearch();
  *
  * <input
  *   value={search}
@@ -20,27 +20,33 @@ import { Context } from "../contexts";
  * ```
  *
  * ---
- * @returns {[string, (newValue: string) => void]} A tuple containing:
- * - `value`: Current global search value.
- * - `setValue`: Function to update the global search value.
+ * @returns {{
+ *   search: string;
+ *   setSearch: (newValue: string) => void;
+ * }} An object containing:
+ * - `search`: The current global search value.
+ * - `setSearch`: Function to update the global search value.
  *
  * @throws {Error} If used outside of a `<ContextProvider>`.
  */
-export const useSearch = (): [string, (newValue: string) => void] => {
+export const useSearch = (): {
+  search: string;
+  setSearch: (newValue: string) => void;
+} => {
   const { ctx, dispatch } = useContext(Context);
-  const value = ctx.search.status;
+  const search = ctx.search.status;
 
   /**
    * Updates the global search value stored in Context.
    *
    * @param {string} newValue - The new search value to be stored globally.
    */
-  const setValue = (newValue: string) => {
+  const setSearch = (newValue: string) => {
     dispatch({
       type: "CHANGE_SEARCH",
       payload: { status: newValue },
     });
   };
 
-  return [value, setValue];
+  return { search, setSearch };
 };
