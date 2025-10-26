@@ -5,6 +5,7 @@
 }
 
 :root {
+  /* 🎨 Colors */
   --color-black-900: #1e2125;
   --color-black-800: #232c3d;
   --color-black-700: #4c586d;
@@ -17,4 +18,14 @@
   --color-red-500: #ff3b30;
 
   --color-white: #ffffff;
+
+  /* 🔠 Typography */
+  --font-size-um: 0.875rem; /* 14px */
+  --font-size-sm: 1rem; /* 16px */
+  --font-size-md: 1.125rem; /* 18px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-tsm: 1.375rem; /* 22px */
+  --font-size-tmd: 1.75rem; /* 28px */
+  --font-size-tlg: 2rem; /* 32px */
+  --font-size-txl: 2.5rem; /* 40px */
 }
