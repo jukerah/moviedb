@@ -1,9 +1,25 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./styles.module.css";
+import { useSearch } from "../../hooks/useSearch";
 
+/**
+ * Application header component that renders:
+ * - The MovieDB logo
+ * - Search bar (connected to global search context)
+ * - Navigation links for Home and Favorites
+ * - A responsive mobile menu with slide animation
+ *
+ * Accessibility:
+ * - Uses proper ARIA roles and labels
+ * - Provides keyboard and screen reader support
+ *
+ * @component
+ * @returns {JSX.Element} The header layout with navigation and search.
+ */
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [search, setSearch] = useSearch();
 
   return (
     <header className={styles.header} role="banner">
@@ -43,6 +59,10 @@ export const Header = () => {
           placeholder="Buscar filmes..."
           className={styles.searchInput}
           aria-label="Campo de busca de filmes"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
       </div>
 
