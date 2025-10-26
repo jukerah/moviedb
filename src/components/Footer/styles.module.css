@@ -1,0 +1,29 @@
+.footer {
+  background-color: var(--color-black-800);
+  color: var(--color-white);
+  text-align: center;
+
+  padding: 16px 24px;
+  font-size: var(--font-size-um);
+}
+
+.footer a {
+  color: var(--color-white);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.footer a:hover {
+  opacity: 0.8;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: 16px 32px;
+    font-size: var(--font-size-sm);
+  }
+}
