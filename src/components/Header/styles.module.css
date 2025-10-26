@@ -1,0 +1,248 @@
+/* ===================================
+   ===== HEADER BASE =====
+=================================== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 8px;
+
+  background-color: var(--color-black-800);
+  color: var(--color-white);
+  border-bottom: 2px solid var(--color-black-600);
+
+  padding: 16px 24px;
+}
+
+/* ===================================
+   ===== LOGO AREA =====
+=================================== */
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  text-decoration: none;
+}
+
+.logoIcon {
+  font-size: 22px;
+}
+
+.logoText {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-orange-500);
+}
+
+/* ===================================
+   ===== SEARCH BAR =====
+=================================== */
+.searchArea {
+  display: flex;
+  width: 100%;
+  order: 3;
+}
+
+.srOnly {
+  display: none;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 20px;
+
+  background-color: var(--color-black-700);
+  border: 2px solid var(--color-black-600);
+  border-radius: 999px;
+
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+
+  outline: none;
+}
+
+/* ===================================
+   ===== DESKTOP NAVIGATION =====
+=================================== */
+.nav {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--color-blue-400);
+  font-weight: 500;
+
+  padding: 6px 12px;
+  border-radius: 6px;
+
+  transition: background 0.3s, color 0.3s;
+}
+
+.navLink:hover {
+  color: var(--color-white);
+}
+
+.active {
+  background-color: var(--color-blue-500);
+  color: var(--color-white);
+}
+
+/* ===================================
+   ===== MENU ICON (HAMBURGER) =====
+=================================== */
+.menuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+}
+
+/* Bars group */
+.menuIcon span,
+.menuIcon::before,
+.menuIcon::after {
+  content: "";
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-white);
+  transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+
+/* Center bar */
+.menuIcon span {
+  top: 50%;
+}
+
+/* Top bar */
+.menuIcon::before {
+  top: calc(50% - 6px);
+}
+
+/* Bottom bar */
+.menuIcon::after {
+  top: calc(50% + 6px);
+}
+
+/* ===== OPEN STATE (X icon) ===== */
+.open::before {
+  transform: translateX(-50%) rotate(45deg);
+  top: 50%;
+}
+
+.open::after {
+  transform: translateX(-50%) rotate(-45deg);
+  top: 50%;
+}
+
+.open span {
+  opacity: 0;
+}
+
+/* ===================================
+   ===== MOBILE NAVIGATION (SLIDE) =====
+=================================== */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  gap: 32px;
+
+  position: fixed;
+  top: 64px;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 64px);
+  padding: 24px;
+
+  background-color: var(--color-black-800);
+  border-top: 2px solid var(--color-black-600);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+
+  z-index: 100;
+}
+
+/* Slide active state */
+.showMobileNav {
+  transform: translateX(0);
+}
+
+/* Mobile links */
+.mobileLink {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-tsm);
+
+  color: var(--color-blue-400);
+  transition: color 0.3s;
+}
+
+.mobileLink:hover {
+  color: var(--color-white);
+}
+
+/* Active link state */
+.mobileActive {
+  color: var(--color-white);
+  background-color: var(--color-blue-500);
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+/* ===================================
+   ===== DESKTOP RESPONSIVE =====
+=================================== */
+@media (min-width: 768px) {
+  .header {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .searchArea {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 0;
+    order: 0;
+  }
+
+  .menuIcon {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .mobileNav {
+    display: none;
+  }
+}
