@@ -5,6 +5,7 @@ export type TMDBMovieDetailsType = {
   release_date: string;
   vote_average: number;
   backdrop_path: string | null;
+  poster_path: string | null;
   genres: Array<{
     id: number;
     name: string;
