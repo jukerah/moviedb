@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useSearch } from "../../hooks/useSearch";
 
@@ -20,6 +20,20 @@ import { useSearch } from "../../hooks/useSearch";
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { search, setSearch } = useSearch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (search && location.pathname !== "/search") {
+      setSearch("");
+    }
+  }, [location]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && location.pathname !== "/search") {
+      navigate("/search");
+    }
+  };
 
   return (
     <header className={styles.header} role="banner">
@@ -60,6 +74,8 @@ export const Header = () => {
           className={styles.searchInput}
           aria-label="Campo de busca de filmes"
           value={search}
+          autoComplete="off"
+          onKeyDown={handleKeyDown}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
