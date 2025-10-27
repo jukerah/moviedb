@@ -1,12 +1,12 @@
 import { useSearch } from "../../hooks/useSearch";
 
 const SearchPage = () => {
-  const [searchValue] = useSearch();
+  const { search } = useSearch();
 
   return (
     <section>
       <h1>SearchPage</h1>
-      <p>{searchValue}</p>
+      <p>{search}</p>
     </section>
   );
 };
