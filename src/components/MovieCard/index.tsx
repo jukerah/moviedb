@@ -8,6 +8,7 @@ type MovieCardProps = {
   title: string;
   voteAverage: number;
   posterPath?: string | null;
+  search?: string;
   /** Optional custom action button (e.g., trash for favorites page) */
   actionButton?: {
     icon: React.ReactNode;
@@ -22,18 +23,20 @@ type MovieCardProps = {
  *
  * It shows:
  * - The movie poster (with link to the movie details page)
- * - The title (also linked)
+ * - The title (also linked), including automatic highlight when matching `search`
  * - The TMDB rating badge
  * - An action button (heart by default or custom via `actionButton`)
  *
  * ---
  * ### Behavior
- * - By default, the card includes a **heart icon** button that toggles the movie as favorite
- *   using the global `useFavorites` context.
- * - You can optionally provide a **custom `actionButton`** (e.g., a trash icon)
- *   to replace the default heart button — perfect for use on the Favorites page.
+ * - When the `search` prop is provided, matching text inside the title is **visually highlighted**
+ *   to support search result context.
+ * - By default, the card includes a **heart icon** button that toggles the movie as favorite.
+ * - You can optionally supply a **custom `actionButton`** (e.g., trash icon) which overrides
+ *   the default favorite button. This is useful when rendering a list of movies already marked
+ *   as favorites.
  * - The poster and title both navigate to the movie’s details page (`/movie/:id`).
- * - The tooltip automatically repositions to stay visible within the screen boundaries.
+ * - The tooltip automatically repositions to stay visible inside the screen boundaries.
  *
  * ---
  * ### Props
@@ -42,7 +45,9 @@ type MovieCardProps = {
  * @property {string} title - The movie title.
  * @property {number} voteAverage - The average TMDB rating (0–10 scale).
  * @property {string | null} [posterPath] - Optional relative path to the movie poster image.
- * @property {Object} [actionButton] - (Optional) Custom action button configuration.
+ * @property {string} [search] - Optional search term. When provided, any matching text found in the title
+ *   will be highlighted to improve visibility in search results.
+ * @property {Object} [actionButton] - Optional custom action button configuration.
  * @property {React.ReactNode} actionButton.icon - The icon or element to render (e.g., 🗑).
  * @property {string} actionButton.label - Accessible label and tooltip text for the button.
  * @property {(id: number) => void} actionButton.onClick - Callback executed when the button is clicked.
@@ -50,45 +55,20 @@ type MovieCardProps = {
  *
  * ---
  * ### Accessibility
- * - Each card is wrapped in an `<article>` with an `aria-label` describing the movie.
- * - The action button uses `aria-pressed` when toggling favorites.
- * - Tooltips and labels are dynamically generated for assistive technologies.
+ * - Each card is wrapped in an `<article>` with `aria-label` describing the movie.
+ * - The action button exposes `aria-pressed` when toggling favorite state.
+ * - Tooltips and labels support assistive technologies.
  * - Tooltip position adjusts automatically when close to screen edges.
  *
- * ---
- * ### Usage Examples
- * ```tsx
- * // Default usage (heart toggle)
- * <MovieCard
- *   id={603}
- *   title="The Matrix"
- *   voteAverage={8.7}
- *   posterPath="/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
- * />
- *
- * // Custom button (trash icon for removing from favorites)
- * <MovieCard
- *   id={603}
- *   title="The Matrix"
- *   voteAverage={8.7}
- *   posterPath="/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
- *   actionButton={{
- *     icon: "🗑",
- *     label: "Remover dos favoritos",
- *     onClick: (id) => removeFavorite(id),
- *   }}
- * />
- * ```
- *
  * @component
- * @returns {JSX.Element} The styled movie card with poster, title, rating, and optional custom action button.
+ * @returns {JSX.Element} The styled movie card with poster, highlightable title, rating, and custom action button support.
  */
-
 export const MovieCard = ({
   id,
   title,
   voteAverage,
   posterPath,
+  search,
   actionButton,
 }: MovieCardProps) => {
   const { favorites, toggleFavorite } = useFavorites();
@@ -155,6 +135,23 @@ export const MovieCard = ({
 
   const icon = actionButton ? actionButton.icon : "❤";
 
+  const getHighlightedTitle = () => {
+    if (!search || search.trim() === "") return title;
+
+    const searchRegex = new RegExp(`(${search})`, "gi");
+    const parts = title.split(searchRegex);
+
+    return parts.map((part, index) =>
+      searchRegex.test(part) ? (
+        <span key={index} className={styles.highlight}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <article className={styles.card} aria-label={`Filme: ${title}`}>
       <div className={styles.posterWrapper}>
@@ -215,7 +212,7 @@ export const MovieCard = ({
           className={styles.title}
           aria-label={`Abrir página de detalhes do filme ${title}`}
         >
-          {title}
+          {getHighlightedTitle()}
         </Link>
         <div>
           <span
