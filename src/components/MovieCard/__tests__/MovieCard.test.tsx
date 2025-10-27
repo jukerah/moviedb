@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
@@ -192,5 +192,54 @@ describe("MovieCard component", () => {
 
     expect(posterLink).toHaveAttribute("href", `/movie/${id}`);
     expect(titleLink).toHaveAttribute("href", `/movie/${id}`);
+  });
+
+  /**
+   * ✅ Test 6 — Custom ActionButton support
+   *
+   * Verifies that a custom actionButton (e.g., trash icon)
+   * renders properly with its label and triggers onClick.
+   */
+  it("renders a custom actionButton and triggers its handler", () => {
+    const mockAction = vi.fn();
+
+    setup({
+      actionButton: {
+        icon: "🗑",
+        label: "Remover dos favoritos",
+        onClick: mockAction,
+      },
+    });
+
+    const button = screen.getByRole("button", {
+      name: /remover dos favoritos/i,
+    });
+    expect(button).toBeInTheDocument();
+
+    fireEvent.click(button);
+    expect(mockAction).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * ✅ Test 7 — Tooltip behavior
+   *
+   * Ensures the tooltip becomes visible on hover and disappears on mouse leave.
+   */
+  it("shows tooltip on hover and hides on mouse leave", () => {
+    setup();
+
+    const button = screen.getByRole("button", {
+      name: /adicionar aos favoritos/i,
+    });
+
+    fireEvent.mouseEnter(button);
+    const tooltip = screen.getByText(/adicionar aos favoritos/i);
+    expect(tooltip).toBeInTheDocument();
+
+    fireEvent.mouseLeave(button);
+    // Tooltip may be removed from DOM after animation delay
+    expect(
+      screen.queryByText(/adicionar aos favoritos/i)
+    ).not.toBeInTheDocument();
   });
 });
