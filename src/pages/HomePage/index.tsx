@@ -115,7 +115,7 @@ const HomePage = () => {
         ),
       ]);
     } catch (err) {
-      setError("Unable to load popular movies.");
+      setError("Não foi possível carregar os filmes populares.");
     } finally {
       // Reset loading states once request finishes.
       setLoading(false);
@@ -140,7 +140,7 @@ const HomePage = () => {
   if (loading) {
     return (
       <section className={styles.wrapper}>
-        <p>Loading movies...</p>
+        <p>Carregando filmes...</p>
       </section>
     );
   } else if (error) {
@@ -174,13 +174,15 @@ const HomePage = () => {
       {/* Sentinel element observed by IntersectionObserver */}
       {page < (totalPages ?? 0) && (
         <div ref={observerRef} className={styles.loadMore}>
-          {loadingMore ? <p>Loading more movies...</p> : null}
+          {loadingMore ? <p>Carregando mais filmes...</p> : null}
         </div>
       )}
 
       {/* Message displayed when all pages are loaded */}
       {totalPages && page >= totalPages && (
-        <p className={styles.endMessage}>🎬 All movies have been loaded!</p>
+        <p className={styles.endMessage}>
+          🎬 Todos os filmes foram carregados!
+        </p>
       )}
     </section>
   );
