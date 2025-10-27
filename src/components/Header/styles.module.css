@@ -6,14 +6,17 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  position: relative;
-  gap: 8px;
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 1;
 
   background-color: var(--color-black-800);
   color: var(--color-white);
   border-bottom: 2px solid var(--color-black-600);
 
+  width: 100%;
   padding: 16px 24px;
+  gap: 8px;
 }
 
 /* ===================================
