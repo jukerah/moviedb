@@ -1,4 +1,4 @@
-export interface TMDBMovieType {
+export interface TMDBPopularMovieType {
   id: number;
   title: string;
   vote_average: number;

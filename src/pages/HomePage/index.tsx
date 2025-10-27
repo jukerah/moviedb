@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
-import type { TMDBMovieType } from "../../types/TMDBMovieType";
+import type { TMDBPopularMovieType } from "../../types/TMDBPopularMovieType";
 import { MovieCard } from "../../components/MovieCard";
 import { useFavorites } from "../../hooks/useFavorites";
 import { fetchPopularMovies } from "../../services";
@@ -34,7 +34,7 @@ import { fetchPopularMovies } from "../../services";
 const HomePage = () => {
   const observerRef = useRef<HTMLDivElement | null>(null);
   const { favorites } = useFavorites();
-  const [movies, setMovies] = useState<TMDBMovieType[]>([]);
+  const [movies, setMovies] = useState<TMDBPopularMovieType[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -111,7 +111,7 @@ const HomePage = () => {
       setMovies((prev) => [
         ...prev,
         ...results.filter(
-          (m: TMDBMovieType) => !prev.some((p) => p.id === m.id)
+          (m: TMDBPopularMovieType) => !prev.some((p) => p.id === m.id)
         ),
       ]);
     } catch (err) {
