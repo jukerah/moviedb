@@ -5,10 +5,14 @@ import {
   type SearchType,
   searchInitialState,
   searchReducer,
+  type FavoritesType,
+  favoritesReducer,
+  favoritesInitialState,
 } from "../reducers";
 
 interface initialStateType {
   search: SearchType;
+  favorites: FavoritesType;
 }
 
 interface ContextType {
@@ -19,6 +23,7 @@ interface ContextType {
 
 const initialState = {
   search: searchInitialState,
+  favorites: favoritesInitialState,
 };
 
 const Context = createContext<ContextType>({
@@ -28,6 +33,7 @@ const Context = createContext<ContextType>({
 
 const mainReducer = (state: initialStateType, action: ReducerActionType) => ({
   search: searchReducer(state.search, action),
+  favorites: favoritesReducer(state.favorites, action),
 });
 
 interface ContextProviderProps {
