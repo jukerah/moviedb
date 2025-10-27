@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import { MovieCard } from "../index";
 import { ContextProvider } from "../../../contexts";
+import styles from "../styles.module.css";
 
 describe("MovieCard component", () => {
   /**
@@ -241,5 +242,27 @@ describe("MovieCard component", () => {
     expect(
       screen.queryByText(/adicionar aos favoritos/i)
     ).not.toBeInTheDocument();
+  });
+
+  /**
+   * ✅ Test 8 — Search term highlighting
+   *
+   * Ensures that when a search term is provided:
+   * - The matched text segment is wrapped inside a <span> with class "highlight"
+   * - The rest of the title remains unchanged
+   *
+   * Why: Guarantees correct visual feedback during search interactions.
+   */
+  it("highlights the search term within the movie title", () => {
+    setup({
+      title: "The Matrix",
+      search: "mat",
+    });
+
+    const highlighted = screen.getByText(/mat/i);
+
+    expect(highlighted).toBeInTheDocument();
+    expect(highlighted.tagName.toLowerCase()).toBe("span");
+    expect(highlighted).toHaveClass(styles.highlight);
   });
 });
