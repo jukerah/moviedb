@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+select {
+  background-color: var(--color-black-700);
+  color: var(--color-white);
+  border: 1px solid var(--color-black-600);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 1rem;
+}
+
+.top {
+  flex-direction: column;
+}
+
+.left {
+  flex-direction: row;
+  align-items: center;
+}
