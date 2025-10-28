@@ -32,6 +32,7 @@ export const Header = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && location.pathname !== "/search") {
       navigate("/search");
+      (e.target as HTMLInputElement).blur();
     }
   };
 
