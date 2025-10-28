@@ -38,8 +38,8 @@
 }
 
 .homeLink:hover {
-  transform: scale(1.05);
-  background-color: var(--color-blue-400);
+  filter: brightness(1.1);
+  transform: scale(1.01);
 }
 
 @media (min-width: 1024px) {

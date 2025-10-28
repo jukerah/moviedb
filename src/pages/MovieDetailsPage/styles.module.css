@@ -98,12 +98,12 @@
   font-size: var(--font-size-sm);
 
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .favoriteBtn:hover {
   filter: brightness(1.1);
-  transition: filter 0.2s ease;
+  transform: scale(1.01);
 }
 
 @media (min-width: 1024px) {
