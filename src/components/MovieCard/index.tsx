@@ -34,36 +34,44 @@ type MovieCardProps = {
  *   to support search result context.
  * - By default, the card includes a **heart icon** button that toggles the movie as favorite.
  * - You can optionally supply a **custom `actionButton`** (e.g., trash icon) which overrides
- *   the default favorite button. This is useful when rendering a list of movies already marked
- *   as favorites.
- * - The poster and title both navigate to the movie’s details page (`/movie/:id`).
- * - The tooltip automatically repositions to stay visible inside the screen boundaries.
+ *   the default favorite button — ideal for a favorites list.
+ * - Both poster and title navigate to the movie details page (`/movie/:id`).
  *
  * ---
- * ### Props
- * @typedef {Object} MovieCardProps
- * @property {number} id - The unique movie ID from TMDB.
- * @property {string} title - The movie title.
- * @property {number} voteAverage - The average TMDB rating (0–10 scale).
- * @property {string | null} [posterPath] - Optional relative path to the movie poster image.
- * @property {string} [search] - Optional search term. When provided, any matching text found in the title
- *   will be highlighted to improve visibility in search results.
- * @property {Object} [actionButton] - Optional custom action button configuration.
- * @property {React.ReactNode} actionButton.icon - The icon or element to render (e.g., 🗑).
- * @property {string} actionButton.label - Accessible label and tooltip text for the button.
- * @property {(id: number) => void} actionButton.onClick - Callback executed when the button is clicked.
- * @property {boolean} [actionButton.isActive] - Optional active state flag for styling or accessibility.
+ * ### Example
+ * ```tsx
+ * <MovieCard
+ *   id={123}
+ *   title="The Matrix"
+ *   voteAverage={8.7}
+ *   posterPath="/abc123.jpg"
+ *   search="matrix"
+ * />
+ *
+ * // Example using a custom action button
+ * <MovieCard
+ *   id={456}
+ *   title="Batman Begins"
+ *   voteAverage={8.2}
+ *   actionButton={{
+ *     icon: "🗑️",
+ *     label: "Remover dos favoritos",
+ *     isActive: true,
+ *     onClick: (id) => console.log("Remove movie", id),
+ *   }}
+ * />
+ * ```
  *
  * ---
  * ### Accessibility
- * - Each card is wrapped in an `<article>` with `aria-label` describing the movie.
- * - The action button exposes `aria-pressed` when toggling favorite state.
- * - Tooltips and labels support assistive technologies.
- * - Tooltip position adjusts automatically when close to screen edges.
+ * - `<article>` wrapper includes `aria-label` for movie context
+ * - Action button uses `aria-pressed` to announce favorite state
+ * - Tooltip positioning adapts to avoid screen overflow
  *
  * @component
  * @returns {JSX.Element} The styled movie card with poster, highlightable title, rating, and custom action button support.
  */
+
 export const MovieCard = ({
   id,
   title,
