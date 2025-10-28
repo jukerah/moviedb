@@ -1,0 +1,11 @@
+.badge {
+  background: var(--color-orange-500);
+  color: var(--color-black-900);
+
+  width: max-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: var(--font-size-um);
+}

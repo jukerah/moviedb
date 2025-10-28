@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useFavorites } from "../../hooks/useFavorites";
+import { VoteAverageBadge } from "../VoteAverageBadge";
 
 type MovieCardProps = {
   id: number;
@@ -228,14 +229,8 @@ export const MovieCard = ({
         >
           {getHighlightedTitle()}
         </Link>
-        <div>
-          <span
-            className={styles.badge}
-            aria-label={`Nota TMDB ${voteAverage}`}
-          >
-            {voteAverage.toFixed(1)}
-          </span>
-        </div>
+
+        <VoteAverageBadge value={voteAverage} />
       </footer>
     </article>
   );

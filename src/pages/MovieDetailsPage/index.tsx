@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import type { TMDBMovieDetailsType } from "../../types/TMDBMovieDetailsType";
 import { useFavorites } from "../../hooks/useFavorites";
 import { fetchMovieDetails } from "../../services";
+import { VoteAverageBadge } from "../../components/VoteAverageBadge";
 
 /**
  * MovieDetailsPage component
@@ -136,9 +137,10 @@ const MovieDetailsPage = () => {
         <p className={styles.meta}>
           <strong>Data de lançamento:</strong> {releaseDate}
         </p>
+
         <p className={styles.meta}>
           <strong>Nota TMDB:</strong>{" "}
-          <span className={styles.rating}>{movie.vote_average.toFixed(1)}</span>
+          <VoteAverageBadge value={movie.vote_average} />
         </p>
 
         {/* Overview */}

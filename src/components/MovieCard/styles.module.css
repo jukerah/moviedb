@@ -160,14 +160,3 @@
   border-radius: 4px;
   padding: 2px;
 }
-
-.badge {
-  background: var(--color-orange-500);
-  color: var(--color-black-900);
-
-  padding: 6px 10px;
-  border-radius: 999px;
-
-  font-weight: 700;
-  font-size: var(--font-size-um);
-}
