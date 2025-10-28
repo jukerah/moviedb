@@ -29,7 +29,7 @@ type VoteAverageBadgeProps = {
  * <VoteAverageBadge value={7.8} />
  * ```
  *
- * @component
+ * @returns {JSX.Element}
  */
 export const VoteAverageBadge = ({ value }: VoteAverageBadgeProps) => {
   return (
