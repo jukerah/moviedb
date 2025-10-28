@@ -135,21 +135,35 @@ export const MovieCard = ({
 
   const icon = actionButton ? actionButton.icon : "❤";
 
+  const removeAccents = (str: string) =>
+    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
   const getHighlightedTitle = () => {
     if (!search || search.trim() === "") return title;
 
-    const searchRegex = new RegExp(`(${search})`, "gi");
-    const parts = title.split(searchRegex);
+    const normalizedSearch = removeAccents(search).toLowerCase();
+    const normalizedTitle = removeAccents(title);
 
-    return parts.map((part, index) =>
-      searchRegex.test(part) ? (
+    const regex = new RegExp(`(${normalizedSearch})`, "gi");
+
+    const parts = normalizedTitle.split(regex);
+
+    let currentIndex = 0;
+    return parts.map((part, index) => {
+      const originalPart = title.slice(
+        currentIndex,
+        currentIndex + part.length
+      );
+      currentIndex += part.length;
+
+      return regex.test(part) ? (
         <span key={index} className={styles.highlight}>
-          {part}
+          {originalPart}
         </span>
       ) : (
-        part
-      )
-    );
+        originalPart
+      );
+    });
   };
 
   return (
