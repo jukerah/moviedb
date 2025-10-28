@@ -30,8 +30,12 @@ export const Header = () => {
   }, [location]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && location.pathname !== "/search") {
-      navigate("/search");
+    // Check if the Enter key was pressed
+    if (e.key === "Enter") {
+      // If not already on the search page, navigate to /search
+      if (location.pathname !== "/search") navigate("/search");
+
+      // Always blur the input to close the mobile keyboard
       (e.target as HTMLInputElement).blur();
     }
   };
