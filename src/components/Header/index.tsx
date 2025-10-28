@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useSearch } from "../../hooks/useSearch";
+import { GenericInput } from "../textfields/GenericInput";
 
 /**
  * Application header component that renders:
@@ -69,14 +70,11 @@ export const Header = () => {
 
       {/* 🔍 SEARCH BAR */}
       <div className={styles.searchArea}>
-        <label htmlFor="search" className={styles.srOnly}>
-          Buscar filmes
-        </label>
-        <input
+        <GenericInput
+          label="search"
           id="search"
           type="text"
           placeholder="Buscar filmes..."
-          className={styles.searchInput}
           aria-label="Campo de busca de filmes"
           value={search}
           autoComplete="off"

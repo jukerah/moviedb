@@ -49,31 +49,6 @@
   order: 3;
 }
 
-.srOnly {
-  display: none;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 10px 20px;
-
-  background-color: var(--color-black-700);
-  border: 2px solid var(--color-black-600);
-  border-radius: 999px;
-
-  color: var(--color-white);
-  font-size: var(--font-size-sm);
-
-  outline: none;
-}
-
 /* ===================================
    ===== DESKTOP NAVIGATION =====
 =================================== */
