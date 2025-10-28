@@ -42,22 +42,6 @@
   font-weight: 700;
 }
 
-.genres {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.genre {
-  background-color: var(--color-blue-500);
-
-  padding: 4px 10px;
-  border-radius: 12px;
-
-  font-size: var(--font-size-um);
-  font-weight: 500;
-}
-
 .meta {
   font-size: 0.95rem;
   color: var(--color-blue-400);

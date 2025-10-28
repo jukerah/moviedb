@@ -6,6 +6,7 @@ import type { TMDBMovieDetailsType } from "../../types/TMDBMovieDetailsType";
 import { useFavorites } from "../../hooks/useFavorites";
 import { fetchMovieDetails } from "../../services";
 import { VoteAverageBadge } from "../../components/VoteAverageBadge";
+import { GenresList } from "../../components/GenresList";
 
 /**
  * MovieDetailsPage component
@@ -125,13 +126,7 @@ const MovieDetailsPage = () => {
         <h1 className={styles.title}>{movie.title}</h1>
 
         {/* Genres */}
-        <div className={styles.genres}>
-          {movie.genres.map((genre) => (
-            <span key={genre.id} className={styles.genre}>
-              {genre.name}
-            </span>
-          ))}
-        </div>
+        <GenresList genres={movie.genres} />
 
         {/* Release date and rating */}
         <p className={styles.meta}>
