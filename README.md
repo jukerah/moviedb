@@ -2,7 +2,7 @@
 
 This project is a React + TypeScript application that allows users to explore movies, create favorite lists, and discover new content using the [The Movie Database (TMDB)](https://www.themoviedb.org/) API.
 
-🌐 **Access the live application:** [https://moviedb-mauve.vercel.app](https://www.themoviedb-mauve.vercel.app)
+🌐 **Access the live application:** [https://moviedb-mario.vercel.app](https://moviedb-mario.vercel.app)
 
 ---
 
