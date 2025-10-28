@@ -6,12 +6,22 @@
 }
 
 .title {
-  font-size: var(--font-size-tlg);
+  font-size: var(--font-size-tsm);
   margin-bottom: 8px;
 }
 
 .totalResults {
-  font-size: var(--font-size-tsm);
+  font-size: var(--font-size-tds);
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: var(--font-size-tlg);
+  }
+
+  .totalResults {
+    font-size: var(--font-size-tsm);
+  }
 }
 
 .highlight {
