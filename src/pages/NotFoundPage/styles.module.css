@@ -26,22 +26,6 @@
   color: var(--color-blue-400);
 }
 
-.homeLink {
-  display: inline-block;
-  background-color: var(--color-blue-500);
-  color: var(--color-white);
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.homeLink:hover {
-  filter: brightness(1.1);
-  transform: scale(1.01);
-}
-
 @media (min-width: 1024px) {
   .title {
     font-size: 8rem;

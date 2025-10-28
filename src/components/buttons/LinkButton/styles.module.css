@@ -1,0 +1,21 @@
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-blue-500);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.linkButton:hover {
+  filter: brightness(1.1);
+  transform: scale(1.01);
+}
+
+.icon {
+  margin-right: 8px;
+}

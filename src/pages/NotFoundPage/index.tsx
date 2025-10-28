@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import { LinkButton } from "../../components/buttons/LinkButton";
 
 const NotFoundPage = () => {
   return (
@@ -9,9 +10,7 @@ const NotFoundPage = () => {
         <p className={styles.subtitle}>
           Ops! A página que você está procurando não existe.
         </p>
-        <Link to="/" className={styles.homeLink}>
-          Voltar para a página inicial
-        </Link>
+        <LinkButton to="/" label="Voltar para a página inicial" />
       </div>
     </section>
   );
