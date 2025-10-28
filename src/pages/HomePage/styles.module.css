@@ -1,11 +1,11 @@
 /* ===========================
-   WRAPPER E LAYOUT GERAL
+   WRAPPER AND GENERAL LAYOUT
 =========================== */
 .wrapper {
   width: 100%;
 }
 
-/* H1 apenas semântico para SEO/A11y */
+/* H1 purely semantic for SEO / Accessibility */
 .hiddenH1 {
   position: absolute !important;
   height: 1px;
@@ -17,7 +17,7 @@
 }
 
 /* ===========================
-   GRID DE FILMES
+   MOVIES GRID
 =========================== */
 .grid {
   display: grid;
@@ -33,7 +33,7 @@
 }
 
 /* ===========================
-   ESTADOS E MENSAGENS
+   STATES AND MESSAGES
 =========================== */
 .error {
   color: #ff4d4f;
@@ -42,7 +42,7 @@
   margin-top: 20px;
 }
 
-/* Mensagem exibida durante carregamento de mais filmes */
+/* Message displayed while loading more movies */
 .loadMore {
   text-align: center;
   color: #888;
@@ -52,7 +52,7 @@
   margin-top: 24px;
 }
 
-/* Mensagem final quando todas as páginas foram carregadas */
+/* Final message when all pages are loaded */
 .endMessage {
   text-align: center;
   color: #666;
@@ -62,7 +62,7 @@
 }
 
 /* ===========================
-   ANIMAÇÕES OPCIONAIS
+   OPTIONAL ANIMATIONS
 =========================== */
 @keyframes fadeIn {
   from {
