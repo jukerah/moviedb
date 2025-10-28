@@ -112,6 +112,12 @@
   animation: fadeUp 0.25s ease forwards;
 }
 
+@media (max-width: 1023px) {
+  .tooltip {
+    display: none !important;
+  }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
