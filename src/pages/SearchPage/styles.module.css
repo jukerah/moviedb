@@ -1,0 +1,83 @@
+/* ===========================
+   WRAPPER AND GENERAL LAYOUT
+=========================== */
+.wrapper {
+  width: 100%;
+}
+
+.title {
+  font-size: var(--font-size-tlg);
+  margin-bottom: 8px;
+}
+
+.totalResults {
+  font-size: var(--font-size-tsm);
+}
+
+.highlight {
+  color: var(--color-orange-500);
+}
+
+/* ===========================
+   MOVIES GRID
+=========================== */
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: center;
+  margin-top: 24px;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    gap: 24px;
+  }
+}
+
+/* ===========================
+   STATES AND MESSAGES
+=========================== */
+.error {
+  color: #ff4d4f;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Message displayed while loading more movies */
+.loadMore {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: opacity 0.3s ease;
+  margin-top: 24px;
+}
+
+/* Final message when all pages are loaded */
+.endMessage {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-top: 24px;
+}
+
+/* ===========================
+   OPTIONAL ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid > * {
+  animation: fadeIn 0.3s ease;
+}
