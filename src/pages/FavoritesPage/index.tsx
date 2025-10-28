@@ -6,6 +6,7 @@ import { useFavorites } from "../../hooks/useFavorites";
 import { fetchMovieDetails } from "../../services";
 import type { TMDBMovieDetailsType } from "../../types/TMDBMovieDetailsType";
 import { MovieCard } from "../../components/MovieCard";
+import { GenericSelect } from "../../components/textfields/GenericSelect";
 
 /**
  * FavoritesPage component
@@ -128,19 +129,19 @@ const FavoritesPage = () => {
       <header className={styles.header}>
         <h1>Meus Filmes Favoritos</h1>
 
-        <div className={styles.sortWrapper}>
-          <label htmlFor="sort">Ordenar por:</label>
-          <select
-            id="sort"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="title-asc">Título (A-Z)</option>
-            <option value="title-desc">Título (Z-A)</option>
-            <option value="rating-desc">Nota (Alta)</option>
-            <option value="rating-asc">Nota (Baixa)</option>
-          </select>
-        </div>
+        <GenericSelect
+          id="sort"
+          label="Ordenar por:"
+          value={sort}
+          labelPosition="left"
+          onChange={(e) => setSort(e.target.value)}
+          options={[
+            { value: "title-asc", label: "Título (A-Z)" },
+            { value: "title-desc", label: "Título (Z-A)" },
+            { value: "rating-desc", label: "Nota (Alta)" },
+            { value: "rating-asc", label: "Nota (Baixa)" },
+          ]}
+        />
       </header>
 
       {/* Movie grid with removable favorites */}
