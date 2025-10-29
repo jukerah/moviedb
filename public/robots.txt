@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /private/
+Sitemap: https://moviedb-mario.vercel.app/sitemap.xml
