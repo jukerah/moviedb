@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 import type { TMDBPopularMovieType } from "../../types/TMDBPopularMovieType";
@@ -42,7 +42,7 @@ const HomePage = () => {
   const [error, setError] = useState<string | null>(null);
 
   // INITIAL FETCH (on mount)
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Fetch the first page of popular movies as soon as the component mounts.
     loadMovies(1);
   }, []);
