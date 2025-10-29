@@ -58,28 +58,6 @@
   line-height: 1.5;
 }
 
-.favoriteBtn {
-  background-color: var(--color-red-500);
-  color: white;
-
-  border: none;
-  border-radius: 8px;
-
-  width: 100%;
-  margin-top: 16px;
-  padding: 12px 18px;
-
-  font-size: var(--font-size-sm);
-
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.favoriteBtn:hover {
-  filter: brightness(1.1);
-  transform: scale(1.01);
-}
-
 @media (min-width: 1024px) {
   .container {
     flex-direction: row;
@@ -94,9 +72,5 @@
 
   .info {
     flex: 1;
-  }
-
-  .favoriteBtn {
-    width: max-content;
   }
 }

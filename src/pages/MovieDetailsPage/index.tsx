@@ -7,6 +7,7 @@ import { useFavorites } from "../../hooks/useFavorites";
 import { fetchMovieDetails } from "../../services";
 import { VoteAverageBadge } from "../../components/VoteAverageBadge";
 import { GenresList } from "../../components/GenresList";
+import { GenericButton } from "../../components/buttons/GenericButton";
 
 /**
  * MovieDetailsPage component
@@ -145,16 +146,17 @@ const MovieDetailsPage = () => {
         </p>
 
         {/* Favorite button */}
-        <button
-          className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ""}`}
+        <GenericButton
           onClick={() => toggleFavorite(movie.id)}
+          label={
+            isFavorite ? "Remover dos Favoritos" : "Adicionar aos Favoritos"
+          }
+          icon="❤"
           aria-pressed={isFavorite}
           aria-label={
             isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"
           }
-        >
-          ❤ {isFavorite ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
-        </button>
+        />
       </div>
     </section>
   );
