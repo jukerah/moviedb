@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useLayoutEffect, useMemo, useState } from "react";
 import styles from "./styles.module.css";
 
 import { useFavorites } from "../../hooks/useFavorites";
@@ -7,6 +6,7 @@ import { fetchMovieDetails } from "../../services";
 import type { TMDBMovieDetailsType } from "../../types/TMDBMovieDetailsType";
 import { MovieCard } from "../../components/MovieCard";
 import { GenericSelect } from "../../components/textfields/GenericSelect";
+import { LinkButton } from "../../components/buttons/LinkButton";
 
 /**
  * FavoritesPage component
@@ -38,8 +38,8 @@ const FavoritesPage = () => {
   const [sort, setSort] = useState("title-asc");
   const [loading, setLoading] = useState(true);
 
-  // Load all favorite movies only once when the page mounts
-  useEffect(() => {
+  // Load all favorite movies
+  useLayoutEffect(() => {
     loadFavorites();
   }, []);
 
@@ -116,9 +116,7 @@ const FavoritesPage = () => {
         <div className={styles.icon}>🎬</div>
         <h2>Nenhum filme favorito ainda</h2>
         <p>Comece explorando filmes populares e adicione seus favoritos!</p>
-        <Link to="/" className={styles.exploreBtn}>
-          Explorar Filmes
-        </Link>
+        <LinkButton label="Explorar Filmes" to="/" />
       </section>
     );
   }
