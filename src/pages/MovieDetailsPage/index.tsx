@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 
@@ -55,7 +55,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Fetch movie details when ID changes
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!id) return;
     loadMovie();
   }, [id]);
