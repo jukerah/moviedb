@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
@@ -51,13 +51,13 @@ const SearchPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   // Extract query param 'q' from URL and update global search state
-  useEffect(() => {
+  useLayoutEffect(() => {
     const params = new URLSearchParams(location.search);
     const q = params.get("q");
     if (q) {
-      setSearch(q); // update global search hook
+      setSearch(decodeURIComponent(q)); // update global search hook
     }
-  }, [location.search]);
+  }, []);
 
   // Fetch when search term changes
   useEffect(() => {
@@ -97,7 +97,7 @@ const SearchPage = () => {
 
   const changeQuery = (newQuery: string) => {
     const params = new URLSearchParams(location.search);
-    params.set("q", newQuery); // altera ou adiciona o parâmetro
+    params.set("q", encodeURIComponent(newQuery));
     navigate(`${location.pathname}?${params.toString()}`, { replace: true });
   };
 
